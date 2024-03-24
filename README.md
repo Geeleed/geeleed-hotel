@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Geeleed Hotel
 
-## Getting Started
+# Frontend
 
-First, run the development server:
+ตัวอย่างเว็บไซต์จองห้องพักโรงแรม พัฒนาด้วย next.js typescripe tailwindcss (โปรเจ็กนี้ทำ backend ด้วย nodejs แยกไว้ที่ [backend repository](https://)) รองรับหลายขนาดหน้าจอ responsive web design และเป็น progressive web application
+
+การใช้งาน
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+จำเป็นต้องรัน backend ด้วย [backend repository](https://)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Flow
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. เปิดหน้าเว็บ
+2. สมัครสมาชิก
+3. ล็อกอิน
+4. เลือกห้องพัก
+5. กรอกข้อมูล
+6. ชำระเงิน
+7. ล็อกเอาท์
 
-## Learn More
+## โฟลเดอร์ config
 
-To learn more about Next.js, take a look at the following resources:
+- แก้ไข backend origin ใน config.json เพื่อให้โปรเจ็กนี้เชื่อมต่อกับ backend ได้ถูกต้อง
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- สามารถแก้ไช้ color theme ได้ในไฟล์ clpl.ts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- ไฟล์ endpointSecret.ts เก็บ public key สำหรับใช้ stripe ร่วมกับ backend
 
-## Deploy on Vercel
+## Demo project
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+เว็บไซต์ตัวอย่างของโปรเจ็กนี้ถูก deploy บน vercel และใช้ฐานข้อมูล mongodb atlas สามารถดู demo ได้ที่ [Geeleed Hotel](...)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## อื่น ๆ
+
+ติดต่อ surasak.kwork@gmail.com
