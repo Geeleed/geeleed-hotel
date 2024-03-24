@@ -10,12 +10,13 @@ import React, { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { PK_STRIPE } from "@/config/pk_stripe";
 import { iconList } from "@/config/iconList";
-import { loadRoom } from "../dataStore";
 import { clearExpireSession } from "../page";
+import { RootState, useAppSelector } from "@/app/component/GlobalStateWrapper";
 
 export default function Me() {
   const [trigger, setTrigger] = useState(false);
-  const [room, setRoom] = useState(loadRoom() || []);
+  const loadRoom = useAppSelector((state: RootState) => state.loadRoom.data);
+  const [room, setRoom] = useState(loadRoom || []);
   const [order, setOrder] = useState([]);
   const loadOrder = async () => {
     const res = await fetch(ep_getOrderByEmail, {

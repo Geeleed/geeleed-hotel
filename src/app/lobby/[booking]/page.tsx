@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { loadBase64, loadRoom } from "../dataStore";
 import Image from "next/image";
 import Calendar from "@/app/component/Calendar";
 import { clpl } from "@/config/clpl";
@@ -14,6 +13,7 @@ import { range } from "@/config/utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { PK_STRIPE } from "@/config/pk_stripe";
 import { clearExpireSession } from "../page";
+import { RootState, useAppSelector } from "@/app/component/GlobalStateWrapper";
 
 export default function Booking({ params }: { params: { booking: string } }) {
   const [monthIndex, setMonthIndex] = useState(new Date().getMonth());
@@ -26,8 +26,9 @@ export default function Booking({ params }: { params: { booking: string } }) {
   ]);
   const [guestNote, setGuestNote] = useState("");
 
-  const base64 = loadBase64();
-  const roomData = loadRoom().filter(
+  const base64 = useAppSelector((state: RootState) => state.loadImage.data);
+  const loadRoom = useAppSelector((state: RootState) => state.loadRoom.data);
+  const roomData = loadRoom.filter(
     (item: any) => item._id === params.booking
   )[0];
   const loadOrderByRoom_id = async () => {

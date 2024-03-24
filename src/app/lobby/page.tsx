@@ -13,16 +13,15 @@ import {
   RootState,
   actions,
   useAppDispatch,
+  useAppSelector,
 } from "../component/GlobalStateWrapper";
-import { loadBase64, loadRoom } from "./dataStore";
 import Link from "next/link";
 import { setToken } from "../signin/actions";
-import { useRouter } from "next/navigation";
 
 export default function Lobby() {
   const dispatch = useAppDispatch();
-  const base64 = loadBase64();
-  const room = loadRoom();
+  const base64 = useAppSelector((state: RootState) => state.loadImage.data);
+  const room = useAppSelector((state: RootState) => state.loadRoom.data);
   const getRoom = async () => {
     const res = await fetch(ep_loadRoom).then((res) => res.json());
     dispatch(actions.loadRoom.setLoadRoom(await res));
