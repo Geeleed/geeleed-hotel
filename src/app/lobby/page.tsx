@@ -193,7 +193,7 @@ const DetailList = ({
     </div>
   );
 };
-export const clearExpireSession = async () => {
+export const clearExpireSession: () => Promise<void> = async () => {
   await fetch(ep_clearExpireSession, {
     method: "DELETE",
   });
