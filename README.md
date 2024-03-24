@@ -36,7 +36,7 @@ npm run dev
 
 ## Demo project
 
-เว็บไซต์ตัวอย่างของโปรเจ็กนี้ถูก deploy บน vercel และใช้ฐานข้อมูล mongodb atlas สามารถดู demo ได้ที่ [Geeleed Hotel](...)
+เว็บไซต์ตัวอย่างของโปรเจ็กนี้ถูก deploy บน vercel และใช้ฐานข้อมูล mongodb atlas สามารถดู demo ได้ที่ [Geeleed Hotel](https://geeleed-hotel.vercel.app/)
 
 ## อื่น ๆ
 
