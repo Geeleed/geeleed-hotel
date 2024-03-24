@@ -1,10 +1,5 @@
 "use client";
-import {
-  ep_clearExpireSession,
-  ep_loadImage,
-  ep_loadRoom,
-  ep_stayIn,
-} from "@/config/api_endpoint";
+import { ep_loadImage, ep_loadRoom, ep_stayIn } from "@/config/api_endpoint";
 import { clpl } from "@/config/clpl";
 import { iconList } from "@/config/iconList";
 import Image from "next/image";
@@ -17,6 +12,7 @@ import {
 } from "../component/GlobalStateWrapper";
 import Link from "next/link";
 import { setToken } from "../signin/actions";
+import { clearExpireSession } from "./clearExpireSession";
 
 export default function Lobby() {
   const dispatch = useAppDispatch();
@@ -192,9 +188,4 @@ const DetailList = ({
       <label className=" flex w-full">{text}</label>
     </div>
   );
-};
-export const clearExpireSession: () => Promise<void> = async () => {
-  await fetch(ep_clearExpireSession, {
-    method: "DELETE",
-  });
 };

@@ -12,7 +12,7 @@ import {
 import { range } from "@/config/utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { PK_STRIPE } from "@/config/pk_stripe";
-import { clearExpireSession } from "../page";
+import { clearExpireSession } from "../clearExpireSession";
 import { RootState, useAppSelector } from "@/app/component/GlobalStateWrapper";
 
 export default function Booking({ params }: { params: { booking: string } }) {

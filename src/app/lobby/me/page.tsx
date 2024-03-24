@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { PK_STRIPE } from "@/config/pk_stripe";
 import { iconList } from "@/config/iconList";
-import { clearExpireSession } from "../page";
+import { clearExpireSession } from "../clearExpireSession";
 import { RootState, useAppSelector } from "@/app/component/GlobalStateWrapper";
 
 export default function Me() {
