@@ -1,8 +1,11 @@
 # Geeleed Hotel
 
+- [Frontend repo](https://github.com/Geeleed/geeleed-hotel)
+- [Backend repo](https://github.com/Geeleed/geeleed-hotel-backend)
+
 # Frontend
 
-ตัวอย่างเว็บไซต์จองห้องพักโรงแรม พัฒนาด้วย next.js typescripe tailwindcss (โปรเจ็กนี้ทำ backend ด้วย nodejs แยกไว้ที่ [backend repository](https://)) รองรับหลายขนาดหน้าจอ responsive web design และเป็น progressive web application
+ตัวอย่างเว็บไซต์จองห้องพักโรงแรม พัฒนาด้วย next.js typescripe tailwindcss (โปรเจ็กนี้ทำ backend ด้วย nodejs แยกไว้ที่ [backend repository](https://github.com/Geeleed/geeleed-hotel-backend)) รองรับหลายขนาดหน้าจอ responsive web design และเป็น progressive web application
 
 การใช้งาน
 
@@ -11,7 +14,7 @@ npm install
 npm run dev
 ```
 
-จำเป็นต้องรัน backend ด้วย [backend repository](https://)
+จำเป็นต้องรัน backend ด้วย [backend repository](https://github.com/Geeleed/geeleed-hotel-backend)
 
 ## Flow
 
