@@ -8,6 +8,6 @@ export const setToken = async (token: string) => {
 export const deleteToken = async () => {
   cookies().delete("token");
 };
-export const getToken = () => {
+export const getToken = async () => {
   cookies().get("token");
 };

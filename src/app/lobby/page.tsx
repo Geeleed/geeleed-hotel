@@ -39,7 +39,7 @@ export default function Lobby() {
       }).then((res) => res.json());
       if (res.process) {
         localStorage.setItem("token", res.token);
-        setToken(res.token);
+        await setToken(res.token);
       }
     };
     renewToken();
