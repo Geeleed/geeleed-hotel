@@ -1,7 +1,7 @@
 import config from "./config.json";
 const backendOrigin = config.backend.origin;
+// const backendOrigin = process.env.backendOrigin;
 export const ep_ = backendOrigin + "/";
-// export const ep_hotelRoom = backendOrigin + "/hotelRoom";
 export const ep_uploadImage = backendOrigin + "/uploadImage";
 export const ep_loadImage = backendOrigin + "/loadImage";
 export const ep_deleteImage = backendOrigin + "/deleteImage";

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { clpl } from "@/config/clpl";
-import hotelRoom from "@/config/mock-json/hotelroom.json";
+import hotelRoom from "@/config/mock-json/hotelRoom.json";
 import Card1 from "./component/Card1";
 import { ep_stayIn } from "@/config/api_endpoint";
 import { useRouter } from "next/navigation";
