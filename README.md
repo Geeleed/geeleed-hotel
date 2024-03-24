@@ -32,7 +32,7 @@ npm run dev
 
 - สามารถแก้ไช้ color theme ได้ในไฟล์ clpl.ts
 
-- ไฟล์ endpointSecret.ts เก็บ public key สำหรับใช้ stripe ร่วมกับ backend
+- ไฟล์ pk_stripe.ts เก็บ public key สำหรับใช้ stripe ร่วมกับ backend
 
 ## Demo project
 

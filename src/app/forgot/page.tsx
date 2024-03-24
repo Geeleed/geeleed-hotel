@@ -29,9 +29,6 @@ export default function Forgot() {
   const handleChange = (e: any) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
   useEffect(() => {
-    console.log(question);
-  }, [question]);
-  useEffect(() => {
     if (localStorage.token) router.push("/lobby");
   }, []);
   return (

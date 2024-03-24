@@ -27,7 +27,6 @@ export default function NewRoom() {
     else arr.splice(arr.indexOf(temp), 1);
     setImageId(arr);
     setFormData((prevData) => ({ ...prevData, imageId: arr }));
-    console.log(arr);
   };
   const handleChange = (e: any) => {
     const { name, value } = e.target;

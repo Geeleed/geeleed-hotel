@@ -2,33 +2,19 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { clpl } from "@/config/clpl";
-// import config from "./../config/config.json";
 import hotelRoom from "@/config/mock-json/hotelroom.json";
-// import MyContact from "./component/MyContact";
 import Card1 from "./component/Card1";
 import { ep_stayIn } from "@/config/api_endpoint";
 import { useRouter } from "next/navigation";
 import Footer from "./component/Footer";
-// const clpl = config.frontend.color_pallet;
 
 export default function Root() {
   const router = useRouter();
-  // const [hotelRoom, setHotelRoom] = useState<any>();
   const [scroll, setScroll] = useState({});
   const handleScroll = (e: any) => {
     const { clientHeight, scrollTop } = e.target;
     setScroll({ scrollTop, clientHeight });
   };
-  // const api_hotelRoom = async () => {
-  //   // await fetch(ep_hotelRoom)
-  //   // const res = await fetch("/api/hotelRoom").then((res) => res.json());
-  //   const res = await fetch(ep_hotelRoom).then((res) => res.json());
-  //   setHotelRoom(res);
-  // };
-  // useEffect(() => {
-  //   // if (localStorage.token) router.push("/lobby");
-  //   api_hotelRoom();
-  // }, []);
   useEffect(() => {
     const stayIn = async () => {
       if (!localStorage.token) return;

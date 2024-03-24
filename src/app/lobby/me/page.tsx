@@ -67,8 +67,6 @@ const Card = ({ data }: any) => {
     loadRoomBy_id();
     clearExpireSession();
   }, []);
-  console.log(thisRoom);
-  console.log(orders);
   let place = Boolean(thisRoom && orders);
   return (
     place && (
