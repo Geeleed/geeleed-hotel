@@ -9,5 +9,5 @@ export const deleteToken = async () => {
   cookies().delete("token");
 };
 export const getToken = async () => {
-  cookies().get("token");
+  cookies().get("token")?.value;
 };

@@ -41,6 +41,7 @@ export default function Signin() {
         },
       }).then((res) => res.json());
       if (res.process) {
+        await setToken(res.token);
         localStorage.setItem("token", res.token);
         router.push("/lobby");
       } else {
