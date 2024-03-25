@@ -1,6 +1,5 @@
 "use client";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import config from "@/config/config.json";
 import Image from "next/image";
 import {
   ep_deleteImage,
