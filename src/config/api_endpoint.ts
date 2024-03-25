@@ -1,4 +1,6 @@
-const backendOrigin = process.env.NEXT_PUBLIC_backendOrigin;
+const backendOrigin =
+  process.env.NEXT_PUBLIC_backendOrigin ||
+  "https://geeleed-hotel-backend.vercel.app";
 export const ep_ = backendOrigin + "/";
 export const ep_uploadImage = backendOrigin + "/uploadImage";
 export const ep_loadImage = backendOrigin + "/loadImage";
