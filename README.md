@@ -9,8 +9,21 @@
 
 การใช้งาน
 
+1. ติดตั้ง library
+
 ```bash
 npm install
+```
+
+2. สร้างไฟล์ .env.local
+
+```bash
+NEXT_PUBLIC_backendOrigin="กำหนด origin ของ backend เช่น http://localhost:8000"
+```
+
+3. รัน
+
+```bash
 npm run dev
 ```
 
@@ -27,8 +40,6 @@ npm run dev
 7. ล็อกเอาท์
 
 ## โฟลเดอร์ config
-
-- แก้ไข backend origin ใน config.json เพื่อให้โปรเจ็กนี้เชื่อมต่อกับ backend ได้ถูกต้อง
 
 - สามารถแก้ไช้ color theme ได้ในไฟล์ clpl.ts
 
