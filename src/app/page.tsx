@@ -7,6 +7,7 @@ import Card1 from "./component/Card1";
 import { ep_stayIn } from "@/config/api_endpoint";
 import { useRouter } from "next/navigation";
 import Footer from "./component/Footer";
+import { deleteToken } from "./signin/actions";
 
 export default function Root() {
   const router = useRouter();
@@ -22,14 +23,18 @@ export default function Root() {
         headers: {
           authorization: `Bearer ${localStorage.token}`,
         },
-      }).then((res) => res.json());
-      if (res.process) {
-        localStorage.setItem("token", res.token);
-        router.push("/lobby");
-      } else {
-        localStorage.removeItem("token");
-        router.push("/");
-      }
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.process) {
+            localStorage.setItem("token", res.token);
+            router.push("/signin");
+          } else {
+            localStorage.removeItem("token");
+            deleteToken();
+            router.push("/");
+          }
+        });
     };
     stayIn();
   }, []);

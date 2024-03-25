@@ -1,6 +1,7 @@
 import config from "./config.json";
-const backendOrigin = config.backend.origin;
-// const backendOrigin = process.env.backendOrigin;
+// const backendOrigin = config.backend.origin;
+const backendOrigin =
+  process.env.backendOrigin || "http://192.168.207.207:8000";
 export const ep_ = backendOrigin + "/";
 export const ep_uploadImage = backendOrigin + "/uploadImage";
 export const ep_loadImage = backendOrigin + "/loadImage";

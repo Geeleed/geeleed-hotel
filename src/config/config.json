@@ -1,5 +1,5 @@
 {
     "backend":{
-        "origin":"https://geeleed-hotel-backend.vercel.app"
+        "origin":"http://192.168.207.207:8000"
     }
 }
