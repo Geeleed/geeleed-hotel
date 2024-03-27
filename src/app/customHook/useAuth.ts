@@ -11,6 +11,7 @@ export default function useAuth({
 }): React.JSX.Element | null {
   const [Page, setPage] = useState<null | React.JSX.Element>(null);
   const router = useRouter();
+  // กำหนด path ที่ยังไม่ signin
   const out = ["/", "/signin", "/signup", "/forgot"];
   const checkAuth = async () => {
     await fetch(ep_stayIn, {

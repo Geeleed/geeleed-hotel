@@ -1,5 +1,5 @@
 "use client";
-import { ep_loadImage, ep_loadRoom, ep_stayIn } from "@/config/api_endpoint";
+import { ep_loadImage, ep_loadRoom } from "@/config/api_endpoint";
 import { clpl } from "@/config/clpl";
 import { iconList } from "@/config/iconList";
 import Image from "next/image";

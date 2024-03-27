@@ -16,6 +16,7 @@ const Signin = () => {
   const [formData, setFormData] = useState<any>({});
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
@@ -30,6 +31,7 @@ const Signin = () => {
         localStorage.setItem("token", res.token);
         router.push("/lobby");
       } else {
+        setIsLoading(false);
         alert(res.message);
       }
     } catch (error) {
@@ -85,10 +87,11 @@ const Signin = () => {
           </Link>
         </div>
         <button
+          onClick={() => setIsLoading(true)}
           className=" p-2 text-[1.5rem] rounded-md hover:opacity-80 transition-all"
           style={{ backgroundColor: clpl.c2 }}
         >
-          เข้าระบบ
+          {isLoading ? "กำลังเข้าระบบ..." : "เข้าระบบ"}
         </button>
         <Link className=" hover:underline text-center my-3" href={"/signup"}>
           สมัครสมาชิก

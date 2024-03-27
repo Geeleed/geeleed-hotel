@@ -3,7 +3,7 @@ import { ep_forgot, ep_reset } from "@/config/api_endpoint";
 import { clpl } from "@/config/clpl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useAuth from "../customHook/useAuth";
 
 export default function Page() {

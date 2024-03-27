@@ -13,6 +13,7 @@ export default function Page() {
 const Signup = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
@@ -26,6 +27,7 @@ const Signup = () => {
       alert(await res.message);
       (await res.process) && router.push("/signin");
     } catch (error) {
+      setIsLoading(false);
       console.error(error);
     }
   };
@@ -86,10 +88,11 @@ const Signup = () => {
         />
         <br />
         <button
+          onClick={() => setIsLoading(true)}
           className=" p-2 text-[1.5rem] rounded-md hover:opacity-80 transition-all"
           style={{ backgroundColor: clpl.c2 }}
         >
-          สมัคร
+          {isLoading ? "กำลังสมัคร..." : "สมัคร"}
         </button>
         <Link className=" hover:underline text-center my-3" href={"/signin"}>
           เข้าระบบ

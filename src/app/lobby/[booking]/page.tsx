@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Calendar from "@/app/component/Calendar";
+import Calendar from "@/app/component/[booking]/Calendar";
 import { clpl } from "@/config/clpl";
 import {
   ep_checkout,

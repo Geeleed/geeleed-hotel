@@ -1,7 +1,7 @@
 "use client";
-import CancelCard from "@/app/component/CancelCard";
-import SuccessCard from "@/app/component/SuccessCard";
-import useAuth from "@/app/customHook/useAuth";
+import CancelCard from "@/app/component/payment/[orderid]/CancelCard";
+import SuccessCard from "@/app/component/payment/[orderid]/SuccessCard";
+// import useAuth from "@/app/customHook/useAuth";
 import { ep_order } from "@/config/api_endpoint";
 import React, { useEffect, useState } from "react";
 
