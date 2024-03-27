@@ -33,7 +33,13 @@ export default function useAuth({
           router.push("/");
         }
       })
-      .catch(() => router.push("/"));
+      .catch(() => {
+        if (out.includes(currentUrl)) {
+          setPage(page);
+        } else {
+          router.push("/");
+        }
+      });
   };
   useEffect(() => {
     checkAuth();

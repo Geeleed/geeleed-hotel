@@ -10,7 +10,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import { PK_STRIPE } from "@/config/pk_stripe";
 import { iconList } from "@/config/iconList";
 import { clearExpireSession } from "../../lobby/clearExpireSession";
-import { formatDateThai } from "../../lobby/me/page";
 
 export default function Card({ data }: any) {
   const { email, session_id, status, order_id, room_id } = data;
@@ -97,3 +96,23 @@ export default function Card({ data }: any) {
     )
   );
 }
+
+const monthTH: any = {
+  Jan: "ม.ค.",
+  Feb: "ก.พ.",
+  Mar: "มี.ค.",
+  Apr: "เม.ษ.",
+  May: "พ.ค.",
+  Jun: "มิ.ย.",
+  Jul: "ก.ค.",
+  Aug: "ส.ค.",
+  Sep: "ก.ย.",
+  Oct: "ต.ค.",
+  Nov: "พ.ย.",
+  Dec: "ธ.ค.",
+};
+
+const formatDateThai = (MMDDYYYY: string) => {
+  const mmddyyyy = MMDDYYYY.split(" ");
+  return `วันที่ ${mmddyyyy[1]} ${monthTH[mmddyyyy[0]]} ${mmddyyyy[2]}`;
+};

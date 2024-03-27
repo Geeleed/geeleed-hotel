@@ -43,23 +43,3 @@ const Me = () => {
     </div>
   );
 };
-
-const monthTH: any = {
-  Jan: "ม.ค.",
-  Feb: "ก.พ.",
-  Mar: "มี.ค.",
-  Apr: "เม.ษ.",
-  May: "พ.ค.",
-  Jun: "มิ.ย.",
-  Jul: "ก.ค.",
-  Aug: "ส.ค.",
-  Sep: "ก.ย.",
-  Oct: "ต.ค.",
-  Nov: "พ.ย.",
-  Dec: "ธ.ค.",
-};
-
-export const formatDateThai = (MMDDYYYY: string) => {
-  const mmddyyyy = MMDDYYYY.split(" ");
-  return `วันที่ ${mmddyyyy[1]} ${monthTH[mmddyyyy[0]]} ${mmddyyyy[2]}`;
-};
