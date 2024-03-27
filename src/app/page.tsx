@@ -1,43 +1,22 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { clpl } from "@/config/clpl";
 import hotelRoom from "@/config/mock-json/hotelRoom.json";
 import Card1 from "./component/Card1";
-import { ep_stayIn } from "@/config/api_endpoint";
-import { useRouter } from "next/navigation";
 import Footer from "./component/Footer";
-import { deleteToken } from "./signin/actions";
+import useAuth from "./customHook/useAuth";
 
-export default function Root() {
-  const router = useRouter();
+export default function Page() {
+  return useAuth({ page: <Root />, currentUrl: "/" });
+}
+
+const Root = () => {
   const [scroll, setScroll] = useState({});
   const handleScroll = (e: any) => {
     const { clientHeight, scrollTop } = e.target;
     setScroll({ scrollTop, clientHeight });
   };
-  useEffect(() => {
-    const stayIn = async () => {
-      if (!localStorage.token) return;
-      const res = await fetch(ep_stayIn, {
-        headers: {
-          authorization: `Bearer ${localStorage.token}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.process) {
-            localStorage.setItem("token", res.token);
-            router.push("/signin");
-          } else {
-            localStorage.removeItem("token");
-            deleteToken();
-            router.push("/");
-          }
-        });
-    };
-    stayIn();
-  }, []);
   return (
     <div
       className=" w-screen h-screen overflow-auto"
@@ -158,4 +137,4 @@ export default function Root() {
       <Footer />
     </div>
   );
-}
+};

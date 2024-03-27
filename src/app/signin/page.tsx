@@ -1,13 +1,17 @@
 "use client";
 
-import { ep_signin, ep_stayIn } from "@/config/api_endpoint";
+import { ep_signin } from "@/config/api_endpoint";
 import { clpl } from "@/config/clpl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useRef, useState } from "react";
-import { setToken } from "./actions";
+import React, { useRef, useState } from "react";
+import useAuth from "../customHook/useAuth";
 
-export default function Signin() {
+export default function Page() {
+  return useAuth({ page: <Signin />, currentUrl: "/signin" });
+}
+
+const Signin = () => {
   const router = useRouter();
   const [formData, setFormData] = useState<any>({});
   const emailRef = useRef<HTMLInputElement>(null);
@@ -22,9 +26,12 @@ export default function Signin() {
         },
         body: JSON.stringify(formData),
       }).then((res) => res.json());
-      await setToken(res.token);
-      localStorage.setItem("token", res.token);
-      (await res.process) ? router.push("/lobby") : alert(res.message);
+      if (res.process) {
+        localStorage.setItem("token", res.token);
+        router.push("/lobby");
+      } else {
+        alert(res.message);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -32,25 +39,6 @@ export default function Signin() {
   const handleChange = (e: any) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  useEffect(() => {
-    const stayIn = async () => {
-      if (!localStorage.token) return;
-      const res = await fetch(ep_stayIn, {
-        headers: {
-          authorization: `Bearer ${localStorage.token}`,
-        },
-      }).then((res) => res.json());
-      if (res.process) {
-        await setToken(res.token);
-        localStorage.setItem("token", res.token);
-        router.push("/lobby");
-      } else {
-        localStorage.removeItem("token");
-        router.push("/");
-      }
-    };
-    stayIn();
-  }, []);
   return (
     <div
       className=" relative flex justify-center md:bg-[url('/image/visualsofdana-T5pL6ciEn-I-unsplash.jpg')]
@@ -111,4 +99,4 @@ export default function Signin() {
       </form>
     </div>
   );
-}
+};

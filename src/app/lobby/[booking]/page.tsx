@@ -14,8 +14,16 @@ import { loadStripe } from "@stripe/stripe-js";
 import { PK_STRIPE } from "@/config/pk_stripe";
 import { clearExpireSession } from "../clearExpireSession";
 import { RootState, useAppSelector } from "@/app/component/GlobalStateWrapper";
+import useAuth from "@/app/customHook/useAuth";
 
-export default function Booking({ params }: { params: { booking: string } }) {
+export default function Page({ params }: { params: { booking: string } }) {
+  return useAuth({
+    page: <Booking params={params} />,
+    currentUrl: "/lobby/[booking]",
+  });
+}
+
+const Booking = ({ params }: { params: { booking: string } }) => {
   const [monthIndex, setMonthIndex] = useState(new Date().getMonth());
   const [fullYear, setFullYear] = useState(new Date().getFullYear());
   const [markDate, setMarkDate] = useState<string[]>([]);
@@ -272,7 +280,7 @@ export default function Booking({ params }: { params: { booking: string } }) {
       </div>
     </div>
   );
-}
+};
 
 const monthNames = [
   "มกราคม",

@@ -12,8 +12,13 @@ import { PK_STRIPE } from "@/config/pk_stripe";
 import { iconList } from "@/config/iconList";
 import { clearExpireSession } from "../clearExpireSession";
 import { RootState, useAppSelector } from "@/app/component/GlobalStateWrapper";
+import useAuth from "@/app/customHook/useAuth";
 
-export default function Me() {
+export default function Page() {
+  return useAuth({ page: <Me />, currentUrl: "/lobby/me" });
+}
+
+const Me = () => {
   const [trigger, setTrigger] = useState(false);
   const loadRoom = useAppSelector((state: RootState) => state.loadRoom.data);
   const [room, setRoom] = useState(loadRoom || []);
@@ -45,7 +50,7 @@ export default function Me() {
       </div>
     </div>
   );
-}
+};
 
 const Card = ({ data }: any) => {
   const { email, session_id, status, order_id, room_id } = data;

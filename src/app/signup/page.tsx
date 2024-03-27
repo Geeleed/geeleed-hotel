@@ -1,11 +1,16 @@
 "use client";
-import { ep_signup, ep_stayIn } from "@/config/api_endpoint";
+import { ep_signup } from "@/config/api_endpoint";
 import { clpl } from "@/config/clpl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import useAuth from "../customHook/useAuth";
 
-export default function Signup() {
+export default function Page() {
+  return useAuth({ page: <Signup />, currentUrl: "/signup" });
+}
+
+const Signup = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({});
   const handleSubmit = async (e: any) => {
@@ -28,24 +33,6 @@ export default function Signup() {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-  useEffect(() => {
-    const stayIn = async () => {
-      if (!localStorage.token) return;
-      const res = await fetch(ep_stayIn, {
-        headers: {
-          authorization: `Bearer ${localStorage.token}`,
-        },
-      }).then((res) => res.json());
-      if (res.process) {
-        localStorage.setItem("token", res.token);
-        router.push("/lobby");
-      } else {
-        localStorage.removeItem("token");
-        router.push("/");
-      }
-    };
-    stayIn();
-  }, []);
   return (
     <div
       className=" relative flex justify-center md:bg-[url('/image/visualsofdana-T5pL6ciEn-I-unsplash.jpg')]
@@ -113,4 +100,4 @@ export default function Signup() {
       </form>
     </div>
   );
-}
+};

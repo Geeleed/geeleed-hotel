@@ -6,6 +6,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "@/app/component/GlobalStateWrapper";
+import useAuth from "@/app/customHook/useAuth";
 import {
   ep_deleteRoomCard,
   ep_loadImage,
@@ -16,7 +17,11 @@ import { iconList } from "@/config/iconList";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-export default function Room() {
+export default function Page() {
+  return useAuth({ page: <Room />, currentUrl: "/lobby/admin/room" });
+}
+
+const Room = () => {
   const [roomCard, setRoomCard] = useState<object[]>();
   const base64_load = useAppSelector(
     (state: RootState) => state.loadImage.data
@@ -69,7 +74,7 @@ export default function Room() {
       </div>
     </div>
   );
-}
+};
 
 interface RoomCard {
   firstLoadRoomCard: any;

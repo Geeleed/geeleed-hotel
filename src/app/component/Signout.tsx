@@ -1,14 +1,15 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
-import { deleteToken } from "../signin/actions";
 
 export default function Signout() {
+  const router = useRouter();
   return (
     <Link
       href={"/"}
       onClick={async () => {
-        await deleteToken();
         localStorage.removeItem("token");
+        router.push("/");
       }}
     >
       ออกจากระบบ

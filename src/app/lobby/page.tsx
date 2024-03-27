@@ -11,10 +11,14 @@ import {
   useAppSelector,
 } from "../component/GlobalStateWrapper";
 import Link from "next/link";
-import { setToken } from "../signin/actions";
 import { clearExpireSession } from "./clearExpireSession";
+import useAuth from "../customHook/useAuth";
 
-export default function Lobby() {
+export default function Page() {
+  return useAuth({ page: <Lobby />, currentUrl: "/lobby" });
+}
+
+const Lobby = () => {
   const dispatch = useAppDispatch();
   const base64 = useAppSelector((state: RootState) => state.loadImage.data);
   const room = useAppSelector((state: RootState) => state.loadRoom.data);
@@ -30,19 +34,6 @@ export default function Lobby() {
     !room && getRoom();
     !base64 && getImage();
     clearExpireSession();
-    const renewToken = async () => {
-      if (!localStorage.token) return;
-      const res = await fetch(ep_stayIn, {
-        headers: {
-          authorization: `Bearer ${localStorage.token}`,
-        },
-      }).then((res) => res.json());
-      if (res.process) {
-        localStorage.setItem("token", res.token);
-        await setToken(res.token);
-      }
-    };
-    renewToken();
   }, []);
   return (
     <div
@@ -94,7 +85,7 @@ export default function Lobby() {
       <br />
     </div>
   );
-}
+};
 const roomGroup = {
   sleep: [
     "ห้องสแตนดาร์ด",

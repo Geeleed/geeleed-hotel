@@ -9,12 +9,21 @@ import {
   useAppSelector,
 } from "@/app/component/GlobalStateWrapper";
 import { clpl } from "@/config/clpl";
+import useAdmin from "@/app/customHook/useAdmin";
 
-export default function AdminLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  return useAdmin(<AdminLayout>{children}</AdminLayout>);
+}
+
+const AdminLayout = ({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) => {
   const base64_load = useAppSelector(
     (state: RootState) => state.loadImage.data
   );
@@ -54,4 +63,4 @@ export default function AdminLayout({
       {children}
     </div>
   );
-}
+};

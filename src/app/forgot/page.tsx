@@ -1,13 +1,16 @@
 "use client";
-import { ep_forgot, ep_reset, ep_stayIn } from "@/config/api_endpoint";
+import { ep_forgot, ep_reset } from "@/config/api_endpoint";
 import { clpl } from "@/config/clpl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { setToken } from "../signin/actions";
+import useAuth from "../customHook/useAuth";
 
-export default function Forgot() {
-  const router = useRouter();
+export default function Page() {
+  return useAuth({ page: <Forgot />, currentUrl: "/forgot" });
+}
+
+const Forgot = () => {
   const [formData, setFormData] = useState<any>({});
   const [question, setQuestion] = useState();
 
@@ -28,9 +31,6 @@ export default function Forgot() {
   };
   const handleChange = (e: any) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  useEffect(() => {
-    if (localStorage.token) router.push("/lobby");
-  }, []);
   return (
     <div
       className=" relative flex justify-center md:bg-[url('/image/visualsofdana-T5pL6ciEn-I-unsplash.jpg')]
@@ -71,7 +71,7 @@ export default function Forgot() {
       </form>
     </div>
   );
-}
+};
 
 const Reset = ({ email, question }: { email: string; question: string }) => {
   const [formData, setFormData] = useState<any>({});
@@ -92,8 +92,7 @@ const Reset = ({ email, question }: { email: string; question: string }) => {
           confirmPassword: formData["confirmPassword"],
         }),
       }).then((res) => res.json());
-      if (await res.process) {
-        await setToken(res.token);
+      if (res.process) {
         localStorage.setItem("token", res.token);
         alert(res.message);
         router.push("/lobby");
@@ -107,24 +106,6 @@ const Reset = ({ email, question }: { email: string; question: string }) => {
   const handleChange = (e: any) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  useEffect(() => {
-    const stayIn = async () => {
-      if (!localStorage.token) return;
-      const res = await fetch(ep_stayIn, {
-        headers: {
-          authorization: `Bearer ${localStorage.token}`,
-        },
-      }).then((res) => res.json());
-      if (res.process) {
-        localStorage.setItem("token", res.token);
-        router.push("/lobby");
-      } else {
-        localStorage.removeItem("token");
-        router.push("/");
-      }
-    };
-    stayIn();
-  }, []);
   return (
     <form className=" flex flex-col w-full">
       <label htmlFor="question">คำถาม</label>
