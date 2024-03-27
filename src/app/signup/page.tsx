@@ -27,9 +27,9 @@ const Signup = () => {
       alert(await res.message);
       (await res.process) && router.push("/signin");
     } catch (error) {
-      setIsLoading(false);
       console.error(error);
     }
+    setIsLoading(false);
   };
   const handleChange = (e: any) => {
     const { name, value } = e.target;
