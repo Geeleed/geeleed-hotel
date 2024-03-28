@@ -12,16 +12,16 @@ import { ep_loadImage, ep_newRoom } from "@/config/api_endpoint";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { clpl } from "@/config/clpl";
-import useAuth from "@/app/customHook/useAuth";
+// import useAuth from "@/app/customHook/useAuth";
 
-export default function Page() {
-  return useAuth({
-    page: <NewRoom />,
-    currentUrl: "/lobby/admin/room/newRoom",
-  });
-}
+// export default function Page() {
+//   return useAuth({
+//     page: <NewRoom />,
+//     currentUrl: "/lobby/admin/room/newRoom",
+//   });
+// }
 
-const NewRoom = () => {
+export default function NewRoom() {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({});
@@ -305,4 +305,4 @@ const NewRoom = () => {
       </form>
     </div>
   );
-};
+}

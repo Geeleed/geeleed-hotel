@@ -15,6 +15,7 @@ export const ep_auth = backendOrigin + "/auth";
 export const ep_loadRoomBy_id = backendOrigin + "/loadRoomBy_id";
 export const ep_checkout = backendOrigin + "/checkout";
 export const ep_order = backendOrigin + "/order";
+export const ep_deleteOrder = backendOrigin + "/order";
 export const ep_getOrderByEmail = backendOrigin + "/getOrderByEmail";
 export const ep_deleteSessionByOrderId =
   backendOrigin + "/deleteSessionByOrderId";
@@ -25,3 +26,4 @@ export const ep_reset = backendOrigin + "/reset";
 export const ep_stayIn = backendOrigin + "/stayIn";
 export const ep_getSessionIdByOrder_id =
   backendOrigin + "/getSessionIdByOrder_id";
+export const ep_loadAllOrder = backendOrigin + "/loadAllOrder";

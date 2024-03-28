@@ -6,16 +6,16 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "@/app/component/GlobalStateWrapper";
-import useAuth from "@/app/customHook/useAuth";
 import { ep_loadImage, ep_loadRoom } from "@/config/api_endpoint";
 import React, { useEffect, useState } from "react";
-import RoomCard from "../../../component/room/RoomCard";
+import RoomCard from "../../../component/admin/room/RoomCard";
+// import useAuth from "@/app/customHook/useAuth";
 
-export default function Page() {
-  return useAuth({ page: <Room />, currentUrl: "/lobby/admin/room" });
-}
+// export default function Page() {
+//   return useAuth({ page: <Room />, currentUrl: "/lobby/admin/room" });
+// }
 
-const Room = () => {
+export default function Room() {
   const [roomCard, setRoomCard] = useState<object[]>();
   const base64_load = useAppSelector(
     (state: RootState) => state.loadImage.data
@@ -53,4 +53,4 @@ const Room = () => {
       </div>
     </div>
   );
-};
+}

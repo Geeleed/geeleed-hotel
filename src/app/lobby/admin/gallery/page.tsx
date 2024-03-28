@@ -14,13 +14,13 @@ import {
 } from "@/app/component/GlobalStateWrapper";
 import { iconList } from "@/config/iconList";
 import { clpl } from "@/config/clpl";
-import useAuth from "@/app/customHook/useAuth";
+// import useAuth from "@/app/customHook/useAuth";
 
-export default function Page() {
-  return useAuth({ page: <Gallery />, currentUrl: "/lobby/admin/gallery" });
-}
+// export default function Page() {
+//   return useAuth({ page: <Gallery />, currentUrl: "/lobby/admin/gallery" });
+// }
 
-const Gallery = () => {
+export default function Gallery() {
   const inputImageRef = useRef<HTMLInputElement>(null);
   const [base64Images, setBase64Images] = useState<string[]>([]);
   const base64_load = useAppSelector(
@@ -152,4 +152,4 @@ const Gallery = () => {
       </div>
     </div>
   );
-};
+}

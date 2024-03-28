@@ -42,6 +42,12 @@ const AdminLayout = ({
         <nav className=" flex gap-2 w-full justify-center pb-2">
           <Link
             className=" hover:underline underline-offset-4"
+            href={"/lobby/admin"}
+          >
+            รายการจอง
+          </Link>
+          <Link
+            className=" hover:underline underline-offset-4"
             href={"/lobby/admin/gallery"}
           >
             เพิ่มภาพ
