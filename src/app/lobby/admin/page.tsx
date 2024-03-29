@@ -21,7 +21,7 @@ export default function Admin() {
     loadOrder();
   }, []);
   return (
-    <div className=" w-screen overflow-auto">
+    <div className=" w-full overflow-auto">
       <div className=" flex flex-col items-center min-w-[1600px]">
         <div className="">
           <div
@@ -39,13 +39,15 @@ export default function Admin() {
             <div>ยกเลิก</div>
           </div>
           {allOrder &&
-            allOrder.map((item: any) => (
-              <OrderRow
-                key={item.order_id}
-                order={item}
-                setAllOrder={setAllOrder}
-              />
-            ))}
+            allOrder
+              .map((item: any) => (
+                <OrderRow
+                  key={item.order_id}
+                  order={item}
+                  setAllOrder={setAllOrder}
+                />
+              ))
+              .reverse()}
         </div>
       </div>
     </div>
